@@ -1,5 +1,10 @@
+import ProductFiltersProvider from "@/context/ProductFiltersContext";
 import ProductsContent from "@/components/product/ProductsContent";
 
 export default function Home() {
-    return <ProductsContent />;
+    return (
+        <ProductFiltersProvider>
+            <ProductsContent />
+        </ProductFiltersProvider>
+    );
 }
