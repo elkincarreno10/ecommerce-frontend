@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Frontend
 
-## Getting Started
+Aplicación de catálogo de productos con carrito de compras construida con Next.js 16, React 19 y TanStack Query. Consume la [Fake Store API](https://fakestoreapi.com) para obtener productos y categorías en tiempo real.
 
-First, run the development server:
+## Funcionalidades
+
+- Listado de productos con búsqueda, filtrado por categoría y ordenamiento por precio o valoración
+- Detalle de producto con selector de cantidad y añadir al carrito
+- Carrito persistente en `localStorage` con popover de resumen
+- Tema claro/oscuro
+- Skeleton loaders durante la carga
+- Toast de confirmación al finalizar compra
+
+## Stack
+
+| Herramienta | Uso |
+|---|---|
+| Next.js 16 | Framework (App Router) |
+| React 19 | UI |
+| TanStack Query v5 | Server state y caché |
+| Tailwind CSS v4 | Estilos |
+| Zod | Validación de respuestas de API |
+| Axios | Cliente HTTP |
+| Vitest + RTL | Tests unitarios |
+
+## Requisitos
+
+- Node.js 18+
+- npm 9+
+
+## Instalación
+
+```bash
+npm install
+```
+
+## Desarrollo
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build de producción
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Tests
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Modo watch (re-ejecuta al guardar)
+npm run test
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Una sola pasada
+npm run test:run
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Con reporte de cobertura
+npm run test:coverage
+```
 
-## Deploy on Vercel
+El reporte de cobertura en HTML se genera en `coverage/index.html`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Estructura del proyecto
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/                  # Rutas (Next.js App Router)
+│   ├── page.tsx          # Página principal — catálogo
+│   └── product/[id]/     # Detalle de producto
+├── components/
+│   ├── cart/             # CartBadge, CartMenu, CartPopover
+│   ├── forms/            # Button, Input, Select
+│   └── product/          # ProductCard, ProductDetail, ProductsContent...
+├── context/              # CartContext, ToastContext, QueryProvider...
+├── hooks/                # useCart, useProduct, useProducts, useClickOutside...
+├── services/             # Llamadas a la API (productsService)
+├── schemas/              # Esquemas Zod para validación
+├── types/                # Tipos TypeScript
+└── utils/                # currency, cn
+```
+
+## Scripts disponibles
+
+| Script | Descripción |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm run start` | Servidor de producción |
+| `npm run lint` | Lint con ESLint |
+| `npm run test` | Tests en modo watch |
+| `npm run test:run` | Tests una sola pasada |
+| `npm run test:coverage` | Tests con cobertura |

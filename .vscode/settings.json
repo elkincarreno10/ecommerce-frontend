@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[dotenv]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.preferences.preferTypeOnlyAutoImports": true,
+    "javascript.preferences.importModuleSpecifier": "non-relative"
+}

@@ -1,0 +1,26 @@
+{
+    "tabWidth": 4,
+    "semi": true,
+    "printWidth": 80,
+    "singleQuote": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "importOrder": [
+        "^(react/(.*)$)|^(react$)",
+        "^(next/(.*)$)|^(next$)",
+        "<THIRD_PARTY_MODULES>",
+        "^@/(assets|api|auth|components|constants|content|context|hooks|lib|pages|routes|services|skeletons|stores|styles|templates|types|validations|ui|utils)/?(.*)$",
+        "^@/(.*)$",
+        "^[./]",
+        "^[./].*(?<!\\.(c|le|sc)ss)$",
+        "^[.]/[-a-zA-Z0-9_]+[.](module)[.](css|scss|less)$"
+    ],
+    "tailwindAttributes": ["tw"],
+    "tailwindFunctions": ["cva"],
+    "plugins": [
+        "@ianvs/prettier-plugin-sort-imports",
+        "prettier-plugin-tailwindcss"
+    ]
+}
